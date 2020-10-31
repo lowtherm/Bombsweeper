@@ -70,6 +70,7 @@ public class BombSquare extends GameSquare
 		}
 	}
 
+    //This Overrides the leftClicked method in GameSquare.
     //When the user left clicks this makes sure the square clicked is both not yet visible and not flagged.
     //If both conditions are met then it checks if the square has a bomb.
     //If the square has a bomb it reveals it by setting the image to the bomb.
@@ -91,6 +92,7 @@ public class BombSquare extends GameSquare
 		}
 	}
 
+    //This Overrides the rightClicked method in GameSquare.
     //This flags a square if it both has not been revealed and is not already flagged.
     //If it is already flagged then the flag is removed.
     public void rightClicked()
