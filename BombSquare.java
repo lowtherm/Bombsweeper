@@ -31,6 +31,8 @@ public final class BombSquare extends GameSquare
     /**This method is used to count the number of mines adjacent to this square and display it on the square as an image.
      *It first runs a loop from -1 to 1 which checks a 3x3 square around this square for bombs. If there's a bomb we increment the counter.
      *It then sets the image to be the number of mines and if there are 0 mines then it triggers the blank finder to reveal all other blanks connected.
+     *
+     * @return the number of mines on adjacent to this square.
      */
 	private int minesNearby() 
     {
