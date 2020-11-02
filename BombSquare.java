@@ -1,6 +1,14 @@
 import java.util.*;
 
-public class BombSquare extends GameSquare 
+/**
+ * This class extends GameSquare and calls methods when the user left clicks, right clicks or reveals blanks squares.
+ * This class completes the Bombsweeper game and so is final. 
+ * 
+ * 
+ * @author Michael Lowther
+ */
+
+public final class BombSquare extends GameSquare 
 { 
     private GameBoard board;                            // Object reference to the GameBoard this square is part of.
     private boolean hasBomb;                            // True if this squre contains a bomb. False otherwise.
@@ -20,9 +28,10 @@ public class BombSquare extends GameSquare
 		this.hasBomb = ((int) (Math.random() * MINE_PROBABILITY)) == 0;
 	}
 
-    //This method is used to count the number of mines adjacent to this square and display it on the square as an image.
-    //It first runs a loop from -1 to 1 which checks a 3x3 square around this square for bombs. If there's a bomb we increment the counter.
-    //It then sets the image to be the number of mines and if there are 0 mines then it triggers the blank finder to reveal all other blanks connected.
+    /**This method is used to count the number of mines adjacent to this square and display it on the square as an image.
+     *It first runs a loop from -1 to 1 which checks a 3x3 square around this square for bombs. If there's a bomb we increment the counter.
+     *It then sets the image to be the number of mines and if there are 0 mines then it triggers the blank finder to reveal all other blanks connected.
+     */
 	private int minesNearby() 
     {
 		for (int i = -1; i <= 1; i++) 
@@ -47,10 +56,11 @@ public class BombSquare extends GameSquare
 		return noOfMines;
 	}
 
-    //This runs a loop from -1 to 1 that checks all adjacent squares to this one. 
-    //The method uses an object called nearbySquare to store each nearbySquare and if they are not visible and have 
-    //no bomb then they become visible and mines nearby is called by that square which calls blankFinder if another blank is 
-    //found thus revealing all connected blanks and all numbered squares adjacent to those blanks.
+    /**This runs a loop from -1 to 1 that checks all adjacent squares to this one. 
+     *The method uses an object called nearbySquare to store each nearbySquare and if they are not visible and have 
+     *no bomb then they become visible and mines nearby is called by that square which calls blankFinder if another blank is 
+     *found thus revealing all connected blanks and all numbered squares adjacent to those blanks.
+     */
 	public void blankFinder() 
     {
 		for (int i = -1; i <= 1; i++) 
@@ -70,12 +80,13 @@ public class BombSquare extends GameSquare
 		}
 	}
 
-    //This Overrides the leftClicked method in GameSquare.
-    //When the user left clicks this makes sure the square clicked is both not yet visible and not flagged.
-    //If both conditions are met then it checks if the square has a bomb.
-    //If the square has a bomb it reveals it by setting the image to the bomb.
-    //If it isn't a bomb it runs the minesNearby method to change the image to display the number of adjacent bombs.
-    //It then makes the visibe variable true as the square has been made visible.
+    /**This Overrides the leftClicked method in GameSquare.
+     *When the user left clicks this makes sure the square clicked is both not yet visible and not flagged.
+     *If both conditions are met then it checks if the square has a bomb.
+     *If the square has a bomb it reveals it by setting the image to the bomb.
+     *If it isn't a bomb it runs the minesNearby method to change the image to display the number of adjacent bombs.
+     *It then makes the visibe variable true as the square has been made visible.
+     */
 	public void leftClicked()
     {
 		if (visible == false && flagged == false) 
@@ -92,9 +103,10 @@ public class BombSquare extends GameSquare
 		}
 	}
 
-    //This Overrides the rightClicked method in GameSquare.
-    //This flags a square if it both has not been revealed and is not already flagged.
-    //If it is already flagged then the flag is removed.
+    /**This Overrides the rightClicked method in GameSquare.
+     *This flags a square if it both has not been revealed and is not already flagged.
+     *If it is already flagged then the flag is removed.
+     */
     public void rightClicked()
     {
         
